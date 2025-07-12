@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bảng xếp hạng ELO</title>
+    <style>
+        table { border-collapse: collapse; width: 80%; margin: auto; }
+        th, td { border: 1px solid #aaa; padding: 8px; text-align: center; }
+        form { text-align: center; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">🏆 Bảng Xếp Hạng ELO</h2>
+
+    <!-- <form method="post">
+        <input type="text" name="search_name" placeholder="Nhập tên người chơi">
+        <input type="submit" value="Tìm kiếm">
+    </form> -->
+
+    {% if search_result %}
+    <p style="text-align:center;">🎯 <b>{{ search_result[1] }}</b> đang ở hạng <b>#{{ search_result[0] }}</b> với ELO <b>{{ search_result[2] }}</b></p>
+    {% elif search_result is not none %}
+    <p style="text-align:center; color: red;">❌ Không tìm thấy người chơi</p>
+    {% endif %}
+
+    <table>
+        <tr><th>Hạng</th><th>Tên</th><th>ELO</th></tr>
+        {% for rank, name, elo in rankings %}
+        <tr><td>{{ rank }}</td><td>{{ name }}</td><td>{{ elo }}</td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
