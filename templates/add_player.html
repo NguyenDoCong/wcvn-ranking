@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thêm người chơi</title>
+  <style>
+    form { width: 300px; margin: auto; }
+    input { width: 100%; padding: 8px; margin-bottom: 10px; }
+    .message { text-align: center; color: green; }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">➕ Thêm người chơi</h2>
+  {% if message %}
+    <p class="message">{{ message }}</p>
+  {% endif %}
+  <form method="post">
+    <input type="text" name="name" placeholder="Tên người chơi" required>
+    <input type="submit" value="Thêm">
+  </form>
+</body>
+</html>

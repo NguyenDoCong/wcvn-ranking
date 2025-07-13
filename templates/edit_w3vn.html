@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chỉnh sửa W3VN 7</title>
+  <style>
+    table { width: 60%; margin: auto; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    form { display: inline; }
+    .message { text-align: center; color: green; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">✏️ Chỉnh sửa tham gia giải W3VN 7</h2>
+
+  {% if message %}
+    <p class="message">{{ message }}</p>
+  {% endif %}
+
+  <table>
+    <tr><th>Tên</th><th>Tham gia</th><th>Chỉnh</th></tr>
+    {% for name, w3vn_7 in players %}
+    <tr>
+      <td>{{ name }}</td>
+      <td>{{ w3vn_7 }}</td>
+      <td>
+        <form method="post">
+          <input type="hidden" name="name" value="{{ name }}">
+          <select name="w3vn_7">
+            <option value="1" {% if w3vn_7 == 1 %}selected{% endif %}>1 (Có)</option>
+            <option value="0" {% if w3vn_7 == 0 %}selected{% endif %}>0 (Không)</option>
+          </select>
+          <input type="submit" value="Lưu">
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

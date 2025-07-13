@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kết quả trận đấu</title>
+    <style>
+        table { border-collapse: collapse; width: 90%; margin: auto; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+        h2 { text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>📋 Danh sách kết quả trận đấu</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Thời gian</th>
+                <th>Người chơi 1</th>
+                <th>Race 1</th>
+                <th>Bản đồ</th>
+                <th>Kết quả</th>
+                <th>Người chơi 2</th>
+                <th>Race 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for match in matches %}
+                <tr>
+                    <td>{{ match.timestamp }}</td>
+                    <td>{{ match.player1 }}</td>
+                    <td>{{ match.race1 }}</td>
+                    <td>{{ match.map }}</td>
+                    <td>{{ match.result }}</td>
+                    <td>{{ match.player2 }}</td>
+                    <td>{{ match.race2 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

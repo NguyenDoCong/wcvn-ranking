@@ -1,9 +1,0 @@
-{
-    "FILE_CONFIG": "config.json",
-    "FILE_RESULTS": "ELO ranking by map - Kết quả.csv",
-    "FILE_PLAYER_LIST": "ELO ranking by map - Danh sách người chơi.csv",
-    "FILE_ELO_HISTORY": "ELO ranking by map - Lịch sử ELO.csv",
-    "FILE_RANKING": "ELO ranking by map - Bảng xếp hạng ELO.csv",
-    "DEFAULT_ELO": 1500,
-    "K_FACTOR": 32
-}
