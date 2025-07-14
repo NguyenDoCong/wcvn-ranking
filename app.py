@@ -397,5 +397,5 @@ if __name__ == "__main__":
     import os
     # if os.environ.get("WERKZEUG_RUN_MAIN") == "true":  # chạy lần đầu, không phải reload
     penalize_non_participants()
-    app.run(debug=True)
-    # app.run(host='0.0.0.0', port=5000, debug=True)
+    # app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
