@@ -97,18 +97,17 @@ cursor = conn.cursor()
 
 # Tạo các bảng
 cursor.executescript("""
-DROP TABLE IF EXISTS players;
-DROP TABLE IF EXISTS matches_raw;
 DROP TABLE IF EXISTS elo_history_raw;
 DROP TABLE IF EXISTS form_responses_raw;
 
-CREATE TABLE players (
+CREATE TABLE IF NOT EXISTS players (
     name TEXT PRIMARY KEY,
     elo INTEGER NOT NULL DEFAULT 1500,
     w3vn_7 INTEGER DEFAULT 0,        
     matches_played INTEGER NOT NULL DEFAULT 0,
     matches_won INTEGER NOT NULL DEFAULT 0,
-    win_rate REAL DEFAULT 0.0
+    win_rate REAL DEFAULT 0.0,
+    penalized INTEGER DEFAULT 0
 );
 
 CREATE TABLE elo_history_raw (

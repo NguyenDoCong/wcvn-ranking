@@ -42,3 +42,4 @@ def update_rankings(db_path):
 
 # Gọi hàm
 update_rankings("elo_ranking.db")
+

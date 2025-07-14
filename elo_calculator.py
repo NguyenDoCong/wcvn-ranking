@@ -62,6 +62,8 @@ def process_elo_matches(db_path):
     for match_id, player1, player2, result, timestamp in matches:
         match_time = timestamp or datetime.now().strftime("%Y-%m-%d")
         process_elo(cursor, match_time, player1, player2, result, mark_processed=True, match_id=match_id)
+        
+    print(f"✅ Đã xử lý {len(matches)} trận đấu ELO.")
 
     conn.commit()
     conn.close()
@@ -70,16 +72,18 @@ def reset_all_elo(db_path):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    cursor.execute("UPDATE players SET elo = 1500, matches_played = 0, matches_won = 0, win_rate = 0.0")
+    cursor.execute("UPDATE players SET elo = 1500, matches_played = 0, matches_won = 0, win_rate = 0.0, penalized= 0")
     cursor.execute("DELETE FROM elo_history_raw")
     cursor.execute("UPDATE form_responses_raw SET processed = 0")
-
+    cursor.execute("UPDATE system_flags SET flag_value = 0")
+    
     conn.commit()
     conn.close()
     print("✅ Đã reset toàn bộ ELO về 1500 và xóa lịch sử.")
 
-reset_all_elo("elo_ranking.db")
 
 # Gọi hàm
 if __name__ == "__main__":
+    reset_all_elo("elo_ranking.db")
+
     process_elo_matches("elo_ranking.db")
